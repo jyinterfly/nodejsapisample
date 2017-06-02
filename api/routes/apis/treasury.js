@@ -8,14 +8,9 @@ var dll = require('../../models/csharp')
 
 function getResult(obj, refcode = "FAIL", errmsg = "") {
     var result = {
-        "_server": { "result": refcode, "errmsg": errmsg }
+        "_server": { "result": refcode, "errmsg": errmsg  } , data:obj
     };
-
-    var objlen = Object.keys(obj).length;
-
-    for (var i = 0; i < objlen; i++) {
-        result[Object.keys(obj)[i]] = obj[Object.keys(obj)[i]];
-    }
+  
     return result;
 }
 
@@ -33,6 +28,7 @@ var Bondfun = {
             res.json(result);
         })
     },
+
 }
 
 router.get('/' + 'getlist', Bondfun.getlist);
